@@ -13,7 +13,7 @@ jobs:
         docker build -t pipeline-test .
     - name: docker_run
       run: |
-        docker run -d -p 8000:8000 -e DJANGO_SECRET_KEY=dev-secret-key-123 --nane final-app pipeline-test
+        docker run -d -p 8000:8000 -e DJANGO_SECRET_KEY=dev-secret-key-123 --name final-app pipeline-test
     - name: curl_ftw
       run: |
         sleep 10
