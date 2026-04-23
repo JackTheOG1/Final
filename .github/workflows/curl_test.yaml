@@ -1,22 +1,39 @@
 name: Build-Curl
-on: 
+
+on:
   workflow_dispatch
-permissions: {}
+
+permissions:
+  contents: read
+
 jobs:
-  build-and-curl:
+  build-test-sbom:
     runs-on: ubuntu-latest
+
     steps:
-    - name: get_code
-      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
-    - name: docker_build
-      run: |
-        docker build -t pipeline-test .
-    - name: docker_run
-      run: |
-        docker run -d -p 8000:8000 -e DJANGO_SECRET_KEY=dev-secret-key-123 --name final-app pipeline-test
-    - name: curl_ftw
-      run: |
-        sleep 10
-        curl -f http://localhost:8000/
-    
-        
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: build docker image
+        run: |
+          docker build -t sbom-test-base .
+
+      - name: generate sbom
+        run: |
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock anchore/syft sbom-test-base:latest -o json > sbom.json
+
+      - name: upload sbom
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: sbom.json
+
+      - name: docker_run
+        run: |
+          docker rm -f final-app || true
+          docker run -d -p 8000:8000 -e DJANGO_SECRET_KEY=dev-secret-key-123 --name final-app sbom-test-base
+
+      - name: curl_ftw
+        run: |
+          sleep 10
+          curl -f http://localhost:8000/
