@@ -2,11 +2,11 @@ FROM python:3.13.13-slim-trixie@sha256:f96eb0213ceab47efc2558b8351888ca01acf6193
 
 WORKDIR /app
 
-COPY requirements.txt
+COPY requirements.txt /app/
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY . /app/
 
 EXPOSE 8000
 
