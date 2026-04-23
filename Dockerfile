@@ -1,10 +1,10 @@
-From python:3.13.13-slim-trixie@sha256:f96eb0213ceab47efc2558b8351888ca01acf6193f4050ee7594c8250516cc8b
+FROM python:3.13.13-slim-trixie@sha256:f96eb0213ceab47efc2558b8351888ca01acf6193f4050ee7594c8250516cc8b
 
 WORKDIR /app
 
 COPY requirements.txt
 
-RUN pipinstall -r requirements.txt
+RUN pip install -r requirements.txt
 
 COPY . .
 
