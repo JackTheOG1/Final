@@ -3,7 +3,7 @@ on:
   workflow_dispatch
 permissions: {}
 jobs:
-  Build-and-Curl:
+  build-and-curl:
     runs-on: ubuntu-latest
     steps:
     - name: get_code
