@@ -9,4 +9,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y curl ca-certifi
 COPY requirements.txt .
 COPY entrypoint.sh .
 
+RUN chmod +x entrypoint.sh
+
 ENTRYPOINT ["bash", "entrypoint.sh"]
