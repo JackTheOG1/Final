@@ -37,3 +37,17 @@ jobs:
         run: |
           sleep 10
           curl -f http://localhost:8000/
+  sbom-scan-and-test:
+    runs-on: ubunto-latest
+    steps:
+      - name: get-code
+        uses: actions/checkout@v4
+      - name: sbom_gen_and_scan
+        uses: ./.gitbub/actions/sbom-scan
+      - name: upload_sbom
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: project-sbom
+          path: bom.json
+          compression-level: 0
+      
