@@ -1,12 +1,15 @@
-FROM python:3.13.13-slim-trixie
+FROM python:3.13-slim-trixie
 
 
 RUN apt-get update && apt-get install --no-install-recommends -y curl ca-certificates && \
     curl -sSfL https://get.anchore.io/syft | sh -s -- -b /usr/local/bin && \
-    curl -sSfL https://get.anchore.io/grype | sh -s -- -b /usr/local/bin
+    curl -sSfL https://get.anchore.io/grype | sh -s -- -b /usr/local/bin && \
+    rm -rf /var/lib/apt/lists/*
 
 
 COPY requirements.txt .
 COPY entrypoint.sh .
+
+RUN chmod +x entrypoint.sh
 
 ENTRYPOINT ["bash", "entrypoint.sh"]
