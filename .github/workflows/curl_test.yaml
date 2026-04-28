@@ -43,7 +43,7 @@ jobs:
       - name: get-code
         uses: actions/checkout@v4
       - name: sbom_gen_and_scan
-        uses: ./.github/actions/sbom-scan
+        uses: ./.github/actions/sbom-scanner
       - name: upload_sbom
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
         with:
