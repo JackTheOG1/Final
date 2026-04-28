@@ -7,5 +7,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y curl ca-certifi
 
 
 COPY requirements.txt .
+COPY entrypoint.sh .
 
-CMD ["syft", "requirements.txt", "-o", "cyclonedx-json"]
+CMD ["bash", "entrypoint.sh"]
