@@ -134,4 +134,4 @@ jobs:
             ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
             ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
             STATE_KEY: 'jackpederson'
-            TF_STAGE: 'stage3'
+            TF_STAGE: 't3'
