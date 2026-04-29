@@ -6,8 +6,8 @@ set -e
 cd /github/workspace/t1
 ls -al
 
-echo "${INPUT_COMMENTER}"
+export ARM_USE_CLI=false
 
 terraform init
-terraform plan -out=tfplan -var "commenter=${INPUT_COMMENTER}"
+terraform plan -out=tfplan
 terraform apply -auto-approve tfplan
