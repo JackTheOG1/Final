@@ -18,9 +18,9 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_container_registry" "teacher-acr" {
+resource "azurerm_container_registry" "jackpederson_acr" {
   name = "acrjackpederson2400"
-  resource_group_name = "rg-acmp-final"
+  resource_group_name = "rg-jackpederson"
   location = "Central US"
   sku = "Basic"
   admin_enabled = false
