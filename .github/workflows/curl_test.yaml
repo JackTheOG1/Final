@@ -59,7 +59,7 @@ jobs:
       uses: actions/checkout@v4
     - name: terraform-stage-1
       uses: ./.github/actions/t2
-      env:
+      with:
         ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
         ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
         ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
