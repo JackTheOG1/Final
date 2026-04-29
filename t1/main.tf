@@ -10,6 +10,7 @@ terraform {
   storage_account_name = "acmp2400storageaccount"
   container_name = "big-tf-state-acmp2400"
   key = "jackpederson.tfstate"
+  use_azuread_auth = true
   }
 }
 
