@@ -20,6 +20,9 @@ inputs:
   TF_STAGE:
     description: 'The TF deployment'
     required: true
+  DJANGO_SECRET_KEY_PROD:
+    description: 'The secret key for django'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
