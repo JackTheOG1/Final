@@ -1,0 +1,25 @@
+name: 'Terraform container actions'
+description: 'Terraform actions'
+author: jack
+inputs:
+  ARM_CLIENT_ID:
+    description: 'Az client id'
+    required: true
+  ARM_CLIENT_SECRET:
+    description: 'Azure client secret'
+    required: true
+  ARM_SUBSCRIPTION_ID:
+    description: 'Azure subscription ID'
+    required: true
+  ARM_TENANT_ID:
+    description: 'Azure Tenant id'
+    required: true
+  STATE_KEY:
+    decsription: 'The unique key for state lookup'
+    required: true
+  TF_STAGE:
+    description: 'The TF deployment'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
