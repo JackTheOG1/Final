@@ -9,6 +9,7 @@ terraform {
   resource_group_name = "rg-acmp-final"
   storage_account_name = "acmp2400storageaccount"
   container_name = "big-tf-state-acmp2400"
+  key = "jackpederson.tfstate"
   use_azuread_auth = true
   }
 }
@@ -18,8 +19,8 @@ provider "azurerm" {
 }
 
 resource "azurerm_container_registry" "teacher-acr" {
-  name = "acrteacheracmp2400"
-  resource_group_name = "rg-teacher"
+  name = "acrjackpederson2400"
+  resource_group_name = "rg-acmp-final"
   location = "Central US"
   sku = "Basic"
   admin_enabled = false
